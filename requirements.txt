@@ -1,0 +1,12 @@
+# Runtime dependencies for the CyberLab analysis pipeline.
+#
+# Install with:
+#     python3 -m venv .venv && source .venv/bin/activate
+#     pip install -r requirements.txt
+
+pandas>=2.0,<3.0
+pyarrow>=14.0     # parquet engine for data/processed/
+numpy>=1.24
+
+# Not required to build the dataset; only to open the notebooks.
+# jupyterlab>=4.0

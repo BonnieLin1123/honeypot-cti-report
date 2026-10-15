@@ -29,6 +29,15 @@ credentials*
 # Those strings stay in data/raw/ and never enter git. Only *derived* and
 # *sanitized* data in data/processed/ is committed.
 data/raw/
+
+# --- 2b. Interim working data: STILL SENSITIVE -------------------------------
+# Built by scripts/build_dataset.py stage 1. Contains plaintext attacker
+# passwords, attacker command text, and hashed attacker IPs (personal data
+# under GDPR, since an IPv4 space is small enough to brute-force a hash of).
+# This is working data, not a published artefact. Only data/processed/ -
+# which is aggregated and redacted - may be committed.
+data/interim/
+
 logs/
 *.log
 cowrie.json
