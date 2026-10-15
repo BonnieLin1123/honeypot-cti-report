@@ -1,0 +1,11 @@
+eventid,events,pct
+cowrie.login.failed,228432,22.99
+cowrie.session.connect,186015,18.72
+cowrie.session.closed,175894,17.71
+cowrie.client.version,167785,16.89
+cowrie.client.kex,158544,15.96
+cowrie.command.input,30921,3.11
+cowrie.log.closed,26989,2.72
+cowrie.login.success,12449,1.25
+cowrie.direct-tcpip.request,6027,0.61
+cowrie.client.fingerprint,392,0.04
