@@ -220,11 +220,3 @@ Open `analysis/01_explore.ipynb` and run all cells.
 
 Steps 4 and 6 are constrained by the three-day sample. Where the sample is too
 thin to support a claim, the report will say so rather than overstate it.
-
----
-
-## Licence
-
-Code in this repository is licensed under **Apache-2.0** (see `LICENSE`). The
-CyberLab dataset is **not** covered by this licence — see the Zenodo record for
-its terms.
