@@ -8,5 +8,7 @@ pandas>=2.0,<3.0
 pyarrow>=14.0     # parquet engine for data/processed/
 numpy>=1.24
 
-# Not required to build the dataset; only to open the notebooks.
-# jupyterlab>=4.0
+# Not required to build the dataset; only to run the notebooks.
+matplotlib>=3.7   # plots in analysis/02_analysis.ipynb
+ipykernel>=6.0    # notebook kernel (VS Code / Jupyter)
+# jupyterlab>=4.0  # optional, if not using VS Code

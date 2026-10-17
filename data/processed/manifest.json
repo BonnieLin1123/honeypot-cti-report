@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-15T21:07:03Z",
+  "generated_at_utc": "2026-10-17T22:37:27Z",
   "source_files": [
     "cyberlab_2020-02-24.json.gz",
     "cyberlab_2020-02-28.json.gz",
@@ -14,16 +14,16 @@
   "sessions_rows": 186015,
   "memory": {
     "per_day_object_mb": [
-      243.0,
-      339.5,
-      356.8
+      221.9,
+      309.4,
+      325.1
     ],
     "per_day_category_mb": [
-      154.6,
-      214.0,
-      225.0
+      141.5,
+      195.0,
+      205.0
     ],
-    "peak_process_mb": 1403
+    "peak_process_mb": 1124
   },
   "checks": {
     "expected_events": 993448,

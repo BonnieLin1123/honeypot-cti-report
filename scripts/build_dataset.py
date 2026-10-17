@@ -65,7 +65,6 @@ from cowrie_io import day_from_name, iter_daily_files, iter_events
 
 # --- parsing -----------------------------------------------------------------
 
-CREDENTIAL_RE = re.compile(r"login attempt \[[^\]]*\]")
 CMD_PREFIX = "CMD: "
 # "direct-tcp connection request to <sha256>:<port> from 127.0.0.1:1234"
 TCPPIP_RE = re.compile(r"request to ([0-9a-f]{64}):(\d+)")
@@ -96,12 +95,16 @@ def clean_client_version(value):
 
 
 def extract_command(message: str):
-    """Recover the command text. `input` does not exist as a field in this data."""
-    if not isinstance(message, str):
-        return None
-    if message.startswith(CMD_PREFIX):
+    """Recover the command text. `input` does not exist as a field in this data.
+
+    Only cowrie.command.input messages carry the "CMD: " prefix. Every other
+    message returns None - falling back to the raw message would copy login
+    attempts (plaintext passwords) and connection lines (hashed IPs) into
+    `input`, and from there into the --publish-commands output.
+    """
+    if isinstance(message, str) and message.startswith(CMD_PREFIX):
         return message[len(CMD_PREFIX):]
-    return message
+    return None
 
 
 def redact_command(command):
@@ -227,7 +230,6 @@ def build_day(path, out_path, limit_sessions=None) -> dict:
     records = []
     for event in iter_events(path, limit_sessions=limit_sessions):
         records.append(clean_event(event, day))
-    raw_mb = megabytes(pd.DataFrame.from_records(records, columns=INTERIM_COLUMNS))
 
     frame = pd.DataFrame.from_records(records, columns=INTERIM_COLUMNS)
     del records
@@ -241,7 +243,7 @@ def build_day(path, out_path, limit_sessions=None) -> dict:
     del frame
 
     return {
-        "day": day, "rows": rows, "raw_mb": raw_mb,
+        "day": day, "rows": rows,
         "before_mb": before_mb, "after_mb": after_mb,
         "file_mb": out_path.stat().st_size / 1e6,
         "seconds": time.perf_counter() - started,
