@@ -1,0 +1,2 @@
+sessions,events,mean_events_per_session,median_duration_s,login_success_rate_pct,sessions_with_relay,distinct_attackers
+186015,993448,5.34,3.2564225,6.69,1155,5471

@@ -1,0 +1,6 @@
+sensor,sessions,events,login_success_rate_pct,median_duration_s
+ubuntu_basic_pool,155874,822896,5.25,3.6081395
+prod-ubuntu-ssh-k8s-local-4,8049,45358,13.12,2.548925
+prod-ubuntu-ssh-k8s-local-3,7940,44884,13.83,3.0352309
+prod-ubuntu-ssh-k8s-local-1,7794,43934,13.72,3.064095
+prod-ubuntu-ssh-k8s-local-2,6358,36376,16.36,3.1498332

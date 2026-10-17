@@ -1,0 +1,77 @@
+# ============================================================================
+# honeypot-cti-report — .gitignore
+#
+# Rule of thumb: this repo may contain CODE and ANALYSIS.
+# It may never contain: secrets or raw honeypot traffic (attacker-supplied data).
+# ============================================================================
+
+# --- 1. Secrets: private keys, tokens, env files ---------------------------
+# If any of these is ever committed, deleting them in a later commit is NOT
+# enough — git retains history forever. Rotate the key, then rewrite history.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.pub.lock
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+.ssh/
+secrets/
+credentials*
+
+# --- 2. Raw collected data: large, and full of attacker-supplied PII -------
+# Attackers type usernames, passwords and hostnames into the honeypot.
+# Those strings stay in data/raw/ and never enter git. Only *derived* and
+# *sanitized* data in data/processed/ is committed.
+data/raw/
+
+# --- 2b. Interim working data: STILL SENSITIVE -------------------------------
+# Built by scripts/build_dataset.py stage 1. Contains plaintext attacker
+# passwords, attacker command text, and hashed attacker IPs (personal data
+# under GDPR, since an IPv4 space is small enough to brute-force a hash of).
+# This is working data, not a published artefact. Only data/processed/ -
+# which is aggregated and redacted - may be committed.
+data/interim/
+
+logs/
+*.log
+cowrie.json
+cowrie.log
+tty.log
+
+# --- 3. Attacker uploads: never open, never execute, never commit ----------
+# Whatever the honeypot captured from a compromised "host" is hostile input.
+# Analysis hashes these files; it does not read or store their contents.
+share/
+downloads/
+*.pickle
+
+# --- 4. Cowrie state directories -------------------------------------------
+# Defensive only. This project analyses published logs and does not run a
+# honeypot, so these should never appear. They are listed so that a stray local
+# Cowrie install cannot leak state or SSH host keys into the repository.
+my-honeypot/
+cowrie-env/
+cowrie.cfg
+cowrie.cfg.dist
+var/
+
+# --- 5. Python --------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- 6. macOS / editor noise ------------------------------------------------
+.DS_Store
+._*
+*.swp
+.idea/
+.vscode/

@@ -1,0 +1,61 @@
+{
+  "generated_at_utc": "2026-10-17T22:37:27Z",
+  "source_files": [
+    "cyberlab_2020-02-24.json.gz",
+    "cyberlab_2020-02-28.json.gz",
+    "cyberlab_2020-02-29.json.gz"
+  ],
+  "days": [
+    "2020-02-24",
+    "2020-02-28",
+    "2020-02-29"
+  ],
+  "events_rows": 993448,
+  "sessions_rows": 186015,
+  "memory": {
+    "per_day_object_mb": [
+      221.9,
+      309.4,
+      325.1
+    ],
+    "per_day_category_mb": [
+      141.5,
+      195.0,
+      205.0
+    ],
+    "peak_process_mb": 1124
+  },
+  "checks": {
+    "expected_events": 993448,
+    "actual_events": 993448,
+    "events_match": true,
+    "expected_sessions": 186015,
+    "actual_sessions": 186015,
+    "sessions_match": true,
+    "sessions_disjoint_across_days": true
+  },
+  "redaction": {
+    "password": "only values attempted >= 50 are published; the SHA-256 column is not published, because a hash of a weak password is wordlist-crackable",
+    "username": "same >= 50 threshold applied",
+    "distinct_passwords_seen": 10905,
+    "distinct_passwords_published": 711,
+    "command_text": "credentials in echo|passwd and echo|chpasswd payloads replaced with [REDACTED]; embedded_credential flag retained",
+    "hashed_ips": "NOT published in data/processed",
+    "attacker_command_text": "NOT published (pass --publish-commands)"
+  },
+  "derived_fields": {
+    "input": "parsed from message (no such field in the source data)",
+    "tcpip_target": "parsed from message (no such field in the source data)"
+  },
+  "outputs": {
+    "password_frequency.csv": 711,
+    "username_frequency.csv": 206713,
+    "event_summary.csv": 993448,
+    "sensor_summary.csv": 186015,
+    "hassh_summary.csv": 158543,
+    "tcpip_port_summary.csv": 6027,
+    "_tcpip_distinct_targets": 247,
+    "_tcpip_top5_share_pct": 49.0,
+    "session_summary.csv": 186015
+  }
+}
